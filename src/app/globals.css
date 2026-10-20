@@ -1,26 +1,71 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+@source "../";
+
+@theme {
+  --color-background: #0b0709;
+  --color-foreground: #fdf8fa;
+  --color-primary: #ff6183;
+  --color-primary-foreground: #140206;
+  --color-accent: #38bdf8;
+  --color-accent-foreground: #06131a;
+  --color-muted: #1b1115;
+  --color-muted-foreground: #b8a3ac;
+  --color-card: #150c10;
+  --color-card-foreground: #fdf8fa;
+  --color-border: #311d25;
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0b0709;
+  --foreground: #fdf8fa;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tavus-inspired OS Window Scanlines & Glows */
+.os-titlebar-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 180, 197, 0.28) 0px,
+    rgba(255, 180, 197, 0.28) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+.tavus-glow {
+  box-shadow:
+    0px 4px 50px rgba(255, 97, 131, 0.22),
+    0px 24px 80px rgba(0, 0, 0, 0.65),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.12);
+}
+
+.glass-window {
+  background: rgba(21, 12, 16, 0.86);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 180, 197, 0.18);
+}
+
+.text-gradient-tavus {
+  background: linear-gradient(135deg, #ffffff 0%, #ffb4c5 48%, #ff6183 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pixel-grid-bg {
+  background-size: 28px 28px;
+  background-image:
+    linear-gradient(to right, rgba(255, 97, 131, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 97, 131, 0.06) 1px, transparent 1px);
 }
